@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "",
-    "start:test": "jest",
-    "test": "jest"
+    "start:test-staged": "jest",
+    "start:test": "jest --watchAll"
   },
   "standard": {
     "env": [
