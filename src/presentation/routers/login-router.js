@@ -1,6 +1,6 @@
 export class LoginRouter {
   route (httpRequest) {
-    if (!httpRequest) {
+    if (!httpRequest || !httpRequest.body) {
       return {
         statusCode: 500
       }
