@@ -10,11 +10,13 @@
     "lint:fix": "eslint --fix",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --colors --noStackTrace --passWithNoTests"
+    "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --colors --noStackTrace --passWithNoTests",
+    "test:staged": "pnpm test -- --findRelatedTests"
   },
   "lint-staged": {
     "*.js": [
       "pnpm lint:fix",
+      "pnpm test:staged",
       "git add"
     ]
   },
