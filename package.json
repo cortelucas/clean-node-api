@@ -10,7 +10,7 @@
     "lint:fix": "eslint --fix",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --colors --noStackTrace --passWithNoTests"
   },
   "lint-staged": {
     "*.js": [
