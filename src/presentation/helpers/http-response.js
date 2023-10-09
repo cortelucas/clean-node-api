@@ -22,9 +22,10 @@ export class HTTPResponse {
     }
   }
 
-  static ok () {
+  static ok (data) {
     return {
-      statusCode: 200
+      statusCode: 200,
+      body: data
     }
   }
 }

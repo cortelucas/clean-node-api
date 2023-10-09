@@ -23,6 +23,6 @@ export class LoginRouter {
       return HTTPResponse.unauthorizedError()
     }
 
-    return HTTPResponse.ok()
+    return HTTPResponse.ok({ accessToken })
   }
 }
