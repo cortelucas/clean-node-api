@@ -1,4 +1,5 @@
 import { MissingParamError } from '../../utils/errors/missing-param-error.js'
+import { UnauthorizedError } from '../errors/unauthorized-error.js'
 import { LoginRouter } from './login-router.js'
 
 const makeSUT = () => {
@@ -83,5 +84,6 @@ describe('Login Router', () => {
     const httpResponse = sut.route(httpRequest)
 
     expect(httpResponse.statusCode).toBe(401)
+    expect(httpResponse.body).toEqual(new UnauthorizedError())
   })
 })
