@@ -99,4 +99,19 @@ describe('Login Router', () => {
 
     expect(httpResponse.statusCode).toBe(500)
   })
+
+  it('should return 500 if no AuthUseCase is provided', () => {
+    class AuthUseCaseSpy {}
+
+    const sut = new LoginRouter(new AuthUseCaseSpy())
+    const httpRequest = {
+      body: {
+        email: 'any_email@mail.com',
+        password: 'any_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(500)
+  })
 })
