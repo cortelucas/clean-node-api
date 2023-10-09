@@ -2,12 +2,24 @@ import { MissingParamError } from '../../utils/errors/missing-param-error.js'
 import { LoginRouter } from './login-router.js'
 
 const makeSUT = () => {
-  return new LoginRouter()
+  class AuthUseCaseSpy {
+    auth (email, password) {
+      this.email = email
+      this.password = password
+    }
+  }
+
+  const authUseCaseSpy = new AuthUseCaseSpy()
+  const sut = new LoginRouter(authUseCaseSpy)
+  return {
+    sut,
+    authUseCaseSpy
+  }
 }
 
 describe('Login Router', () => {
   it('should return 400 if no email is provided', () => {
-    const sut = makeSUT()
+    const { sut } = makeSUT()
     const httpRequest = {
       body: {
         password: 'any_password'
@@ -20,7 +32,7 @@ describe('Login Router', () => {
   })
 
   it('should return 400 if no password is provided', () => {
-    const sut = makeSUT()
+    const { sut } = makeSUT()
     const httpRequest = {
       body: {
         email: 'any_email@email.com'
@@ -33,16 +45,30 @@ describe('Login Router', () => {
   })
 
   it('should return 500 if no httpRequest is provided', () => {
-    const sut = makeSUT()
+    const { sut } = makeSUT()
     const httpResponse = sut.route()
 
     expect(httpResponse.statusCode).toBe(500)
   })
 
   it('should return 500 if an invalid httpRequest is provided', () => {
-    const sut = makeSUT()
+    const { sut } = makeSUT()
     const httpResponse = sut.route({})
 
     expect(httpResponse.statusCode).toBe(500)
+  })
+
+  it('should call AuthUseCaseSpy with correct params', () => {
+    const { sut, authUseCaseSpy } = makeSUT()
+    const httpRequest = {
+      body: {
+        email: 'any_email@mail.com',
+        password: 'any_password'
+      }
+    }
+
+    sut.route(httpRequest)
+    expect(authUseCaseSpy.email).toBe(httpRequest.body.email)
+    expect(authUseCaseSpy.password).toBe(httpRequest.body.password)
   })
 })
