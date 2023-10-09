@@ -18,8 +18,11 @@ export class LoginRouter {
       return HTTPResponse.badRequest('password')
     }
 
-    this.authUseCase.auth(email, password)
+    const accessToken = this.authUseCase.auth(email, password)
+    if (!accessToken) {
+      return HTTPResponse.unauthorizedError()
+    }
 
-    return HTTPResponse.unauthorizedError()
+    return HTTPResponse.ok()
   }
 }

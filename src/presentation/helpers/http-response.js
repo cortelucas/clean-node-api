@@ -21,4 +21,10 @@ export class HTTPResponse {
       body: new UnauthorizedError()
     }
   }
+
+  static ok () {
+    return {
+      statusCode: 200
+    }
+  }
 }
