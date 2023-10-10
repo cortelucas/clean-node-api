@@ -1,4 +1,5 @@
 import { MissingParamError } from '../../utils/errors/missing-param-error.js'
+import { ServerError } from '../errors/server-error.js'
 import { UnauthorizedError } from '../errors/unauthorized-error.js'
 
 export class HTTPResponse {
@@ -11,7 +12,8 @@ export class HTTPResponse {
 
   static serverError () {
     return {
-      statusCode: 500
+      statusCode: 500,
+      body: new ServerError()
     }
   }
 
