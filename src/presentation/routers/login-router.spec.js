@@ -1,8 +1,6 @@
-import { InvalidParamError } from '../../utils/errors/invalid-param-error.js'
-import { MissingParamError } from '../../utils/errors/missing-param-error.js'
-import { ServerError } from '../errors/server-error.js'
-import { UnauthorizedError } from '../errors/unauthorized-error.js'
-import { LoginRouter } from './login-router.js'
+import { InvalidParamError, MissingParamError } from '../../utils/errors/index.js'
+import { ServerError, UnauthorizedError } from '../errors/index.js'
+import { LoginRouter } from './index.js'
 
 const makeSUT = () => {
   const authUseCaseSpy = makeAuthUseCase()

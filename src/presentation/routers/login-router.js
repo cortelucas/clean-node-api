@@ -1,6 +1,5 @@
-import { InvalidParamError } from '../../utils/errors/invalid-param-error.js'
-import { MissingParamError } from '../../utils/errors/missing-param-error.js'
-import { HTTPResponse } from '../helpers/http-response.js'
+import { InvalidParamError, MissingParamError } from '../../utils/errors/index.js'
+import { HTTPResponse } from '../helpers/index.js'
 
 export class LoginRouter {
   constructor (authUseCase, emailValidator) {
