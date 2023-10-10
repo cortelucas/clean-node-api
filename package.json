@@ -11,7 +11,7 @@
     "lint:staged": "lint-staged",
     "prepare": "husky install",
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --colors --noStackTrace --passWithNoTests",
-    "test:staged": "pnpm test -- --silent --passWithNoTests --findRelatedTests",
+    "test:staged": "pnpm test -- --findRelatedTests",
     "test:unit": "pnpm test -- --watch -c jest.unit.config.js",
     "test:integration": "pnpm test -- --watch -c jest.integration.config.js",
     "test:ci": "pnpm test -- --coverage"
