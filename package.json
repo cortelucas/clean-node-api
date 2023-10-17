@@ -23,7 +23,11 @@
       "git add"
     ]
   },
-  "keywords": [ "clean arch", "clean archtecture", "api"],
+  "keywords": [
+    "clean arch",
+    "clean archtecture",
+    "api"
+  ],
   "author": "cortelucas",
   "license": "ISC",
   "devDependencies": {
@@ -35,5 +39,8 @@
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "lint-staged": "^14.0.1"
+  },
+  "dependencies": {
+    "validator": "^13.11.0"
   }
 }
