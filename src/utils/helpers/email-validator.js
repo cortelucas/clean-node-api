@@ -1,5 +1,7 @@
+import validator from 'validator'
+
 export class EmailValidator {
   isValid (email) {
-    return true
+    return validator.isEmail(email)
   }
 }
