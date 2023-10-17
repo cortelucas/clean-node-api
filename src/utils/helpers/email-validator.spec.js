@@ -7,4 +7,11 @@ describe('Email Validator', () => {
 
     expect(isEmailValid).toBe(true)
   })
+
+  it('should return false if validator returns false', () => {
+    const sut = new EmailValidator()
+    const isEmailValid = sut.isValid('invalid_email')
+
+    expect(isEmailValid).toBe(false)
+  })
 })
